@@ -1,0 +1,51 @@
+<Window x:Class="Budget.BudgetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Бюджет" Height="450" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource WindowBackgroundBrush}">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" CornerRadius="10" Padding="10,10,10,10" Margin="0,0,0,15">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#4A6CF7" Offset="0"/>
+                    <GradientStop Color="#7C3AED" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock Text="Бюджет" FontSize="20" FontWeight="Bold" Foreground="White"
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <Border Grid.Row="1" CornerRadius="10" BorderBrush="#CBD5E1" BorderThickness="1"
+                Background="White" Padding="2">
+            <DataGrid x:Name="MyGrid" AutoGenerateColumns="False"
+                      IsReadOnly="True" SelectionMode="Single"
+                      CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding IdBudget}" Width="50"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Kategory.NameKategory}" Width="*"/>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}" Width="*"/>
+                    <DataGridTextColumn Header="Лимит" Binding="{Binding Limit, StringFormat={}{0:C}}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,5">
+            <Button Content="Добавить" Width="110" Height="36" Margin="5,0" Click="AddClick"
+                    Style="{DynamicResource AddButtonStyle}"/>
+            <Button Content="Изменить" Width="110" Height="36" Margin="5,0" Click="EditClick"
+                    Style="{DynamicResource EditButtonStyle}"/>
+            <Button Content="Удалить" Width="110" Height="36" Margin="5,0" Click="DeleteClick"
+                    Style="{DynamicResource DeleteButtonStyle}"/>
+            <Button Content="Обновить" Width="110" Height="36" Margin="5,0" Click="RefreshClick"
+                    Style="{DynamicResource RefreshButtonStyle}"/>
+        </StackPanel>
+    </Grid>
+</Window>

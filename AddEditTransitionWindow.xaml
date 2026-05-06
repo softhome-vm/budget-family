@@ -1,0 +1,45 @@
+<Window x:Class="Budget.AddEditTransitionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Транзакция" Height="492" Width="420"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{DynamicResource WindowBackgroundBrush}">
+
+    <Border Margin="15" CornerRadius="12" Background="White"
+            BorderBrush="#CBD5E1" BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect Color="#7C3AED" BlurRadius="12" ShadowDepth="3" Opacity="0.12"/>
+        </Border.Effect>
+
+        <StackPanel Margin="15">
+            <TextBlock Text="Транзакция" FontSize="18" FontWeight="Bold"
+                       Foreground="{DynamicResource TitleGradientBrush}"
+                       HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+            <TextBlock Text="Аккаунт:" Style="{DynamicResource FieldLabelStyle}" Margin="0,0,0,5"/>
+            <ComboBox x:Name="AccountComboBox" Margin="0,0,0,10"
+                      DisplayMemberPath="DisplayName" SelectedValuePath="IdAccouts"/>
+
+            <TextBlock Text="Категория:" Style="{DynamicResource FieldLabelStyle}" Margin="0,0,0,5"/>
+            <ComboBox x:Name="CategoryComboBox" Margin="0,0,0,10"
+                      DisplayMemberPath="DisplayName" SelectedValuePath="IdKategory"/>
+
+            <TextBlock Text="Сумма:" Style="{DynamicResource FieldLabelStyle}" Margin="0,0,0,5"/>
+            <TextBox x:Name="AmountTextBox" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Дата:" Style="{DynamicResource FieldLabelStyle}" Margin="0,0,0,5"/>
+            <DatePicker x:Name="DatePicker" Margin="0,0,0,10"
+                        xmlns:sys="clr-namespace:System;assembly=System.Runtime"/>
+
+            <TextBlock Text="Комментарий:" Style="{DynamicResource FieldLabelStyle}" Margin="0,0,0,5"/>
+            <TextBox x:Name="DescriptionTextBox" Margin="0,0,0,15"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Сохранить" Width="110" Height="36" Margin="0,0,10,0" Click="SaveClick"
+                        Style="{DynamicResource SaveButtonStyle}"/>
+                <Button Content="Отмена" Width="110" Height="36" Click="CancelClick"
+                        Style="{DynamicResource CancelButtonStyle}"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>
